@@ -3,22 +3,22 @@ import { Check, X, Award } from "lucide-react";
 
 const mahmoudBenefits = [
   "Content strategy, not just editing",
-  "Fast delivery",
+  "Fast 24-48 hour turnaround",
   "High-retention hooks & pacing",
+  "Advanced Sound Design",
   "Platform-specific optimization",
   "Modern trends & effects",
   "Direct communication",
-  "Flexible revisions",
 ];
 
 const othersIssues = [
   "Generic cookie-cutter edits",
   "Slow delivery (5-7+ days)",
   "No understanding of hooks",
+  "Basic sound design",
   "One-size-fits-all approach",
   "Outdated editing style",
   "Unclear communication",
-  "No flexibility with revisions"
 ];
 
 const WhyChooseSection = () => {
@@ -37,7 +37,7 @@ const WhyChooseSection = () => {
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-foreground mb-4">
             Why Choose{" "}
-            <span className="text-gradient-accent">Me</span>?
+            <span className="text-gradient-accent">Mahmoud Obaidou</span>?
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             See the difference between working with a strategic content partner
