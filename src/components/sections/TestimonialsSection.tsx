@@ -23,7 +23,7 @@ const testimonials: TestimonialCardProps[] = [
   {
     name: "Mike Chamberlin",
     role: "",
-    subscribers: "200K Subscribers",
+    subscribers: "85K Subscribers",
     content:
       "Mike came to us with no YouTube channel. We launched his first 4 videos and immediately hit 450K total views, including 280K views on his very first video, gaining 35K subscribers.",
     avatar: "https://i.imgur.com/jCmSCk2.jpeg",
