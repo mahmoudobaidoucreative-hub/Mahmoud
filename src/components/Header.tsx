@@ -60,7 +60,7 @@ const Header = () => {
 
           {/* CTA */}
           <div className="hidden md:block">
-            <CTAButton size="sm">Chat on WhatsApp</CTAButton>
+            <CTAButton size="sm">Let's Contact</CTAButton>
           </div>
 
           {/* Mobile Menu Button */}

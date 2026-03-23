@@ -63,7 +63,7 @@ const FAQSection = () => {
         {/* CTA */}
         <div className="text-center">
           <p className="text-muted-foreground mb-4">Still have questions?</p>
-          <CTAButton size="lg">Chat on WhatsApp</CTAButton>
+          <CTAButton size="lg">Let's Contact</CTAButton>
         </div>
       </div>
     </section>

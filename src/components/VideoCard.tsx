@@ -3,8 +3,8 @@ import { Play, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface VideoCardProps {
-  thumbnail: string;
-  title: string;
+  thumbnail?: string; // جعلناها اختيارية
+  title?: string;     // جعلناها اختيارية
   category?: string;
   orientation?: "vertical" | "horizontal";
   videoUrl?: string;
@@ -12,7 +12,7 @@ interface VideoCardProps {
 
 const VideoCard = ({
   thumbnail,
-  title,
+  title = "",
   category,
   orientation = "vertical",
   videoUrl,
@@ -20,7 +20,7 @@ const VideoCard = ({
   const [isHovered, setIsHovered] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Block scroll when modal is open
+  // منع التمرير عند فتح الفيديو
   useEffect(() => {
     if (isModalOpen) {
       document.body.style.overflow = "hidden";
@@ -34,27 +34,39 @@ const VideoCard = ({
 
   const aspectRatio = orientation === "vertical" ? "aspect-[9/16]" : "aspect-video";
 
+  // دالة لجلب الصورة المصغرة من يوتيوب تلقائياً في حال عدم وجود صورة يدوية
+  const getYouTubeThumbnail = (url?: string) => {
+    if (!url) return null;
+    const match = url.match(/(?:embed\/|v=)([^&?]+)/);
+    const videoId = match ? match[1] : null;
+    return videoId ? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg` : null;
+  };
+
+  const finalThumbnail = thumbnail || getYouTubeThumbnail(videoUrl);
+
   return (
     <>
       <div
         className={cn(
-          "group relative overflow-hidden rounded-xl cursor-pointer glass-card glow-effect transition-all duration-500",
+          "group relative overflow-hidden rounded-xl cursor-pointer glass-card glow-effect transition-all duration-500 bg-muted",
           aspectRatio
         )}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         onClick={() => setIsModalOpen(true)}
       >
-        <img
-          src={thumbnail}
-          alt={title}
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-        />
+        {finalThumbnail && (
+          <img
+            src={finalThumbnail}
+            alt={title}
+            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+          />
+        )}
         
         {/* Overlay */}
         <div
           className={cn(
-            "absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent transition-opacity duration-300",
+            "absolute inset-0 bg-gradient-to-t from-background via-background/10 to-transparent transition-opacity duration-300",
             isHovered ? "opacity-90" : "opacity-60"
           )}
         />
@@ -78,7 +90,7 @@ const VideoCard = ({
               {category}
             </span>
           )}
-          <h3 className="text-foreground font-semibold line-clamp-2">{title}</h3>
+          <h3 className="text-foreground font-semibold line-clamp-2 text-sm">{title}</h3>
         </div>
       </div>
 
@@ -91,22 +103,32 @@ const VideoCard = ({
           <div
             className={cn(
               "relative bg-card rounded-2xl overflow-hidden shadow-2xl",
-              orientation === "vertical" ? "max-w-sm w-full" : "max-w-4xl w-full"
+              orientation === "vertical" ? "max-w-[400px] w-full" : "max-w-4xl w-full"
             )}
             onClick={(e) => e.stopPropagation()}
           >
             <button
-              className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-background/80 flex items-center justify-center hover:bg-background transition-colors"
+              className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-black/50 text-white flex items-center justify-center hover:bg-black/70 transition-colors"
               onClick={() => setIsModalOpen(false)}
             >
               <X className="w-5 h-5" />
             </button>
-            <div className={cn(aspectRatio, "bg-muted flex items-center justify-center")}>
-              <div className="text-center p-8">
-                <Play className="w-16 h-16 text-muted-foreground mx-auto mb-4" />
-                <p className="text-muted-foreground">Video Player Placeholder</p>
-                <p className="text-sm text-muted-foreground/70 mt-2">{title}</p>
-              </div>
+            
+            <div className={cn(aspectRatio, "bg-black w-full")}>
+              {videoUrl ? (
+                <iframe
+                  src={`${videoUrl}?autoplay=1&rel=0`}
+                  title={title}
+                  className="w-full h-full border-0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              ) : (
+                <div className="flex flex-col items-center justify-center h-full text-muted-foreground p-8">
+                  <Play className="w-16 h-16 mb-4 opacity-20" />
+                  <p>Video not available</p>
+                </div>
+              )}
             </div>
           </div>
         </div>

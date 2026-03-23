@@ -46,7 +46,7 @@ const HeroSection = () => {
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up" style={{ animationDelay: "0.4s" }}>
             <CTAButton size="lg" icon="whatsapp">
-              Chat on WhatsApp
+              Let's Contact
             </CTAButton>
             <CTAButton
               variant="outline"
@@ -72,7 +72,7 @@ const HeroSection = () => {
               <div className="text-sm text-muted-foreground mt-1">Videos Edited</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl sm:text-4xl font-display font-bold text-gradient-accent">1M+</div>
+              <div className="text-3xl sm:text-4xl font-display font-bold text-gradient-accent">10M+</div>
               <div className="text-sm text-muted-foreground mt-1">Views Generated</div>
             </div>
           </div>

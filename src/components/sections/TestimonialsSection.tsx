@@ -3,33 +3,36 @@ import CTAButton from "@/components/CTAButton";
 
 const testimonials: TestimonialCardProps[] = [
   {
-    name: "Ahmad Mahmood",
-    role: "YouTube Educator",
-    subscribers: "200K Subscribers",
+    name: "Flex God",
+    role: "",
+    subscribers: "50K Subscribers",
     content:
-      "7-Figure Entrepreneur — In just 4-5 videos, we generated $250K+ in YouTube revenue for Ahmad, including his 2nd most popular video which gained 950K views on the Andrew Tate interview and 540K views on the Tristan Tate interview. All delivered under tight deadlines. Complete podcast production that turns conversations into revenue-generating content.",
-    avatar: "https://yt3.googleusercontent.com/9rd7yt7PiI6wYkWaLMl9GFcA664Yj3woEH5AlSEolwU8vdI_VC8iDCOKPzkBnJScWRLDxzRJZw=s160-c-k-c0x00ffffff-no-rj",
+      "I partnered with Quan to elevate his channel across all fronts—from creative ideation to high-end video design and production. By implementing strategic visual storytelling, we successfully drove a massive surge in viewership and, more importantly, generated a significant increase in product sales. This transformation turned his content into a high-converting marketing asset that delivers measurable business growth.",
+    avatar: "https://i.imgur.com/sc785za.jpeg",
     rating: 5,
+    videoUrl: "https://www.youtube.com/embed/bt1K8k5WvFE", // ✅ NEW
     thumbnails: [
-       { image: "https://i.imgur.com/awQb62H.png", url: "https://i.imgur.com/awQb62H.png",  },
-  { image: "https://i.imgur.com/IQ9G2e2.png", url: "https://i.imgur.com/IQ9G2e2.png",  },
+       { image: "https://i.imgur.com/3rYZont.png", url: "https://i.imgur.com/3rYZont.png",  },
+  { image: "https://i.imgur.com/X9vX1Yg.png", url: "https://i.imgur.com/X9vX1Yg.png",  },
   { image: "https://imgur.com/zTlaQJ8.png", url: "https://imgur.com/zTlaQJ8.png",  },
+  { image: "https://i.imgur.com/fY5poaZ.png", url: "https://i.imgur.com/fY5poaZ.png",  },
 
   // add more screenshots... 
 ]
   },
   {
     name: "Mike Chamberlin",
-    role: "E-commerce Educator",
+    role: "",
     subscribers: "200K Subscribers",
     content:
       "Mike came to us with no YouTube channel. We launched his first 4 videos and immediately hit 450K total views, including 280K views on his very first video, gaining 35K subscribers.",
-    avatar: "https://yt3.googleusercontent.com/38hjjPnUYdwLfJqoa1U9JVMQszeNjPyo81bIfcQMUCcPuUzfyQBt82f0B1-Nbkmd_SfXtyAT=s160-c-k-c0x00ffffff-no-rj",
+    avatar: "https://i.imgur.com/jCmSCk2.jpeg",
     rating: 5,
   },
   {
     name: "Kamal Ben SALAH",
-    role: "Co-founder • Ted3im Agency",
+    role: "",
+    subscribers: "Co-founder • Ted3im Agency",
     content:
       "Mahmoud helped me design videos for my company and handled the audio production. He played a key role in the success of this project and our company's growth. I highly recommend working with him.",
     avatar: "https://i.imgur.com/3634gpF.jpeg",
@@ -37,7 +40,8 @@ const testimonials: TestimonialCardProps[] = [
   },
   {
     name: "Abderrezak Torche",
-    role: "E-commerce Brand Owner of Izar",
+    role: "",
+    subscribers: "E-commerce Brand Owner of Izar",
     content:
       "Working with Mahmoud was the best investment for our brand. Our product videos now convert like crazy. He doesn't just edit – he understands marketing.",
     avatar: "https://i.imgur.com/FzeTecc.jpeg",

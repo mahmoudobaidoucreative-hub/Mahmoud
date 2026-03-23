@@ -25,7 +25,7 @@ const FinalCTASection = () => {
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <CTAButton size="lg" className="group">
-              Chat on WhatsApp
+              Let's Contact
               <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
             </CTAButton>
             <CTAButton
@@ -39,22 +39,6 @@ const FinalCTASection = () => {
             >
               View Portfolio
             </CTAButton>
-          </div>
-
-          {/* Trust Badges */}
-          <div className="mt-12 pt-8 border-t border-border/30">
-            <p className="text-muted-foreground text-sm mb-4">
-              Trusted by creators and brands worldwide
-            </p>
-            <div className="flex items-center justify-center gap-8 opacity-50">
-              {/* Placeholder for brand logos */}
-              {[1, 2, 3, 4].map((i) => (
-                <div
-                  key={i}
-                  className="w-24 h-8 bg-muted/30 rounded-lg"
-                />
-              ))}
-            </div>
           </div>
         </div>
       </div>

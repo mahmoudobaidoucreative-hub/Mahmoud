@@ -1,4 +1,4 @@
-import { Quote, Star, X } from "lucide-react";
+import { Star, X } from "lucide-react";
 import { useState } from "react";
 
 interface Screenshot {
@@ -14,6 +14,7 @@ export interface TestimonialCardProps {
   rating?: number;
   subscribers?: string;
   thumbnails?: Screenshot[];
+  videoUrl?: string;
 }
 
 const TestimonialCard = ({
@@ -24,22 +25,76 @@ const TestimonialCard = ({
   rating = 5,
   subscribers,
   thumbnails,
+  videoUrl, // ✅ FIXED
 }: TestimonialCardProps) => {
   const [selectedScreenshot, setSelectedScreenshot] = useState<Screenshot | null>(null);
 
   return (
     <>
       <div className="glass-card rounded-2xl p-6 lg:p-8 glow-effect transition-all duration-300 hover:border-primary/30 flex flex-col h-full">
-        {/* Quote + content */}
-        <Quote className="w-10 h-10 text-primary/30 mb-4" />
-        <p className="text-foreground/90 text-lg leading-relaxed mb-4 flex-1">{content}</p>
 
-        {/* Subscribers */}
-        {subscribers && <p className="text-green-400 text-sm mb-4">{subscribers}</p>}
+        {/* Header */}
+        <div className="flex items-center gap-4 mb-3">
+          {avatar ? (
+            <img
+              src={avatar}
+              alt={name}
+              className="w-12 h-12 rounded-full object-cover border-2 border-primary/30"
+            />
+          ) : (
+            <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center">
+              <span className="text-primary font-bold text-lg">
+                {name.charAt(0)}
+              </span>
+            </div>
+          )}
+
+          <div>
+            <h4 className="font-semibold text-foreground">{name}</h4>
+            {subscribers && (
+              <p className="text-muted-foreground text-sm">{subscribers}</p>
+            )}
+          </div>
+        </div>
+
+        {/* Rating */}
+        <div className="flex gap-1 mb-4">
+          {[...Array(rating)].map((_, i) => (
+            <Star key={i} className="w-4 h-4 text-yellow-400 fill-yellow-400" />
+          ))}
+        </div>
+
+        {/* Role */}
+        {role && (
+          <p className="text-gray-300 font-medium mb-2">
+            {role}
+          </p>
+        )}
+
+        {/* Content */}
+        <p className="text-foreground/80 leading-relaxed mb-4 flex-1">
+          {content}
+        </p>
+
+        {/* Video */}
+        {videoUrl && (
+          <div className="mb-4 rounded-lg overflow-hidden">
+            <div className="relative w-full pb-[56.25%]">
+              <iframe
+                src={videoUrl}
+                title="Testimonial Video"
+                className="absolute top-0 left-0 w-full h-full rounded-lg"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+          </div>
+        )}
 
         {/* Screenshots */}
         {thumbnails && thumbnails.length > 0 && (
-          <div className="flex flex-col gap-4 mb-4">
+          <div className="flex flex-col gap-4 mt-4">
             {thumbnails.map((shot, idx) => (
               <button
                 key={idx}
@@ -55,33 +110,9 @@ const TestimonialCard = ({
             ))}
           </div>
         )}
-
-        {/* Footer */}
-        <div className="flex items-center gap-4 mt-auto">
-          {avatar ? (
-            <img
-              src={avatar}
-              alt={name}
-              className="w-12 h-12 rounded-full object-cover border-2 border-primary/30"
-            />
-          ) : (
-            <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center">
-              <span className="text-primary font-bold text-lg">{name.charAt(0)}</span>
-            </div>
-          )}
-          <div className="flex-1">
-            <h4 className="font-semibold text-foreground">{name}</h4>
-            <p className="text-muted-foreground text-sm">{role}</p>
-          </div>
-          <div className="flex gap-0.5">
-            {[...Array(rating)].map((_, i) => (
-              <Star key={i} className="w-4 h-4 text-primary fill-primary" />
-            ))}
-          </div>
-        </div>
       </div>
 
-      {/* Full-page Lightbox */}
+      {/* Lightbox */}
       {selectedScreenshot && (
         <div
           className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
